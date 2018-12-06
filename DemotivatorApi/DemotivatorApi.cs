@@ -28,7 +28,7 @@ namespace DemotivatorApi
 
             var slideDemotivatorParser = new DemotivatorSlideParser(new DemotivatorSlideBuilder());
             
-            var videoDemotivatorParser = new DemotivatorVideoParser();
+            var videoDemotivatorParser = new DemotivatorVideoParser(domainUrl);
 
             this.PageParser = new PageParser(demotivatorParser, slideDemotivatorParser,videoDemotivatorParser, domainUrl);
         }

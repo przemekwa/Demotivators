@@ -37,7 +37,7 @@ this.MainPage$ = new Page();
 
 
   getMainPageFromApi():Observable<Page> {
-    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators');;
+    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators/2');
   }
 
 

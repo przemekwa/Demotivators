@@ -1,6 +1,15 @@
   <ul>  
     <li *ngFor="let item of MainPage$.demotivatorCollection">
-      <img src="{{item.imgUrl}}"/>
+      <img src="{{item.imgUrl}}" />
+      
+      
+    </li>
+
+    <li *ngFor="let item of MainPage$.demotivatorVideoCollection">
+      <video controls> 
+        <source src="{{item.videoUrl}}" type="video/mp4">   
+
+      </video>
       
       
     </li>
