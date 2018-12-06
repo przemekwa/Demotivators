@@ -1,7 +1,7 @@
 import { Page, Demotivator } from './Demotivator';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-demotivators',
@@ -21,10 +21,6 @@ this.Title2 = "dsds";
   }
 
 
-  get:Page {
-    this.http.get
-    
-    
-  }
+
 
 }
