@@ -12,35 +12,25 @@ import { Observable } from 'rxjs';
 })
 export class DemotivatorsComponent implements OnInit {
 
-  Title2:any;
+  Title2: any;
   MainPage$: Page;
 
-  constructor(private http: HttpClient) { 
-this.Title2 = "dsds";
-this.MainPage$ = new Page();
-
+  constructor(private http: HttpClient) {
+    this.Title2 = "dsds";
+    this.MainPage$ = new Page();
   }
 
   ngOnInit() {
     this.getMainPage();
-
-
   }
 
   getMainPage() {
-    this.getMainPageFromApi().subscribe(res=>{
-
+    this.getMainPageFromApi().subscribe(res => {
       this.MainPage$ = res
-
     })
   }
 
-
-  getMainPageFromApi():Observable<Page> {
+  getMainPageFromApi(): Observable<Page> {
     return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators/2');
   }
-
-
-
-
 }
