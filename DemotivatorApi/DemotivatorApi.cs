@@ -27,8 +27,10 @@ namespace DemotivatorApi
             var demotivatorParser = new DemotivatorParser(new DemotivatorBuilder(), domainUrl);
 
             var slideDemotivatorParser = new DemotivatorSlideParser(new DemotivatorSlideBuilder());
+            
+            var videoDemotivatorParser = new DemotivatorVideoParser();
 
-            this.PageParser = new PageParser(demotivatorParser, slideDemotivatorParser, domainUrl);
+            this.PageParser = new PageParser(demotivatorParser, slideDemotivatorParser,videoDemotivatorParser, domainUrl);
         }
 
         public IEnumerable<Page> GetPages(int first, int last)

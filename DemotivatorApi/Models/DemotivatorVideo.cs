@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DemotivatorApi.Models
 {
-    public class DemotivatorVideo : Demotivator
+    public class DemotivatorSlide : Demotivator
     {
-        public string VideoUrl { get; set; }
+        public string Description { get; set; }
     }
 }

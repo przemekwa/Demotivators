@@ -22,7 +22,7 @@ namespace DemotivatorApiTests
       [Fact]
         public void Get_Demot_From_First_Page()
         {
-            var rezult = this.DemotivatorApi.GetPage(1);
+            var rezult = this.DemotivatorApi.GetPage(2);
 
             Assert.Equal(2, rezult.DemotivatorCollection.Count);
         }
@@ -30,7 +30,7 @@ namespace DemotivatorApiTests
       [Fact]
         public void Get_Slide_Demot()
         {
-            var pageParser = new PageParser(null, new DemotivatorSlideParser(new DemotivatorSlideBuilder()), null);
+            var pageParser = new PageParser(null, new DemotivatorSlideParser(new DemotivatorSlideBuilder()),null, null);
 
             var result =
                 pageParser.GetDemovivatorSlides(

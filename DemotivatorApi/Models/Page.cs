@@ -11,11 +11,13 @@ namespace DemotivatorApi.Models
         public List<Demotivator> DemotivatorCollection { get; set; }
         
         public List<DemotivatorSlide> DemotivatorSlideCollection { get; set; }
+        public List<DemotivatorVideo> DemotivatorVideoCollection { get; set; }
 
         public Page(int pageNumber)
         {
             this.DemotivatorCollection = new List<Demotivator>();
             this.DemotivatorSlideCollection = new List<DemotivatorSlide>();
+            this.DemotivatorVideoCollection = new List<DemotivatorVideo>();
 
             this.PageNumber = pageNumber;
         }

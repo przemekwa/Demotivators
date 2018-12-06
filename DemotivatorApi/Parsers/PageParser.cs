@@ -13,13 +13,15 @@ namespace DemotivatorApi.Parsers
         private readonly IParser<Demotivator> demotivatorParser;
 
         private readonly IParser<DemotivatorSlide> slideDemotivatorParser;
+        private readonly IParser<DemotivatorVideo> demotivatorVideoParser;
 
         private readonly string domainUrl;
 
-        public PageParser(IParser<Demotivator> demotivatorParser, IParser<DemotivatorSlide> slideDemotivatorParser, string domainUrl)
+        public PageParser(IParser<Demotivator> demotivatorParser, IParser<DemotivatorSlide> slideDemotivatorParser, IParser<DemotivatorVideo> demotivatorVideoParser, string domainUrl)
         {
             this.demotivatorParser = demotivatorParser;
             this.slideDemotivatorParser = slideDemotivatorParser;
+            this.demotivatorVideoParser = demotivatorVideoParser;
             this.domainUrl = domainUrl;
         }
 
@@ -33,7 +35,13 @@ namespace DemotivatorApi.Parsers
             {
                 var isSlideType = htmlNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
 
-                if (isSlideType)
+                var isVideo = htmlNode.SelectNodes("div/div/video");
+
+                if (isVideo != null)
+                {
+                    rezult.DemotivatorVideoCollection.Add(demotivatorVideoParser.Parse(htmlNode));
+                }
+                else if (isSlideType)
                 {
                     var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
@@ -50,11 +58,6 @@ namespace DemotivatorApi.Parsers
                     var demotivator = this.demotivatorParser.Parse(htmlNode);
 
                     if (demotivator == null)
-                    {
-                        continue;
-                    }
-
-                    if (demotivator.ImgUrl.Contains("demotywatoryfb") == false)
                     {
                         continue;
                     }

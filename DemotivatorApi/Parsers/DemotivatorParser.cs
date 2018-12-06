@@ -14,11 +14,6 @@ namespace DemotivatorApi.Parsers
 
         public DemotivatorParser(Builder<Demotivator> builder, string url)
         {
-            if (builder == null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
             if (string.IsNullOrEmpty(url))
             {
                 throw new ArgumentNullException(nameof(url));
@@ -26,7 +21,7 @@ namespace DemotivatorApi.Parsers
 
             this.url = url;
             
-            this.builder = builder;
+            this.builder = builder ?? throw new ArgumentNullException(nameof(builder));
         }
 
         public Demotivator Parse(HtmlNode htmllNode)
