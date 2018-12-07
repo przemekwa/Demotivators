@@ -1,12 +1,14 @@
-<div>Current Page {{CurrentPage}}</div>
 
-<button (click)="getNextPage()">Next Page</button>
-<div  class="demotivators"
+<div  
             infiniteScroll
             [infiniteScrollDistance]="1"
             [infiniteScrollThrottle]="50"
             [infiniteScrollUpDistance]="2"
             (scrolled)="onScroll()">
+
+            <div>Current Page {{CurrentPage}}</div>
+
+<button (click)="getNextPage()">Next Page</button>
 
     <div  *ngFor="let item of MainPage$.demotivatorCollection">
       <img src="{{item.imgUrl}}" />

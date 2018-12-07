@@ -4,9 +4,14 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemotivatorsComponent } from './demotivators/demotivators.component';
-
+import { RouterModule, Routes } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
+
+const appRoutes: Routes = [
+  { path: 'd', component: DemotivatorsComponent },
+  
+];
 
 @NgModule({
   declarations: [
@@ -14,10 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     DemotivatorsComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    ),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
