@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemotivatorsComponent } from './demotivators/demotivators.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DemotivatorsComponent
+    DemotivatorsComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -27,7 +27,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    RouterModule
+    RouterModule,
+    NgxLoadingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

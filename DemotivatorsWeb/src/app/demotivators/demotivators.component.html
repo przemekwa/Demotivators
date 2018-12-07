@@ -1,3 +1,5 @@
+<a  (click)="getNextPage()" class="rainbow-button" alt="Next Page"></a>
+
 
 <div  
             infiniteScroll
@@ -8,7 +10,11 @@
 
             <div>Current Page {{CurrentPage}}</div>
 
-<button (click)="getNextPage()">Next Page</button>
+           
+
+
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 
     <div  *ngFor="let item of MainPage$.demotivatorCollection">
       <img src="{{item.imgUrl}}" />
@@ -23,5 +29,5 @@
       
       
     </li> -->
-  
+    
 </div>

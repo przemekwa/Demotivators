@@ -1,4 +1,4 @@
-import { Page, Demotivator } from './Demotivator';
+import { Page } from './Demotivator';
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,29 +11,40 @@ import { Observable } from 'rxjs';
   styleUrls: ['./demotivators.component.css']
 })
 export class DemotivatorsComponent implements OnInit {
-
+  public loading = false;
+  public loadingScroll = false;
   Title2: any;
-  @Input() MainPage$: Page;
+  @Input() MainPage$: Page = new Page();
   CurrentPage : number;
 
   constructor(private http: HttpClient) {
     this.Title2 = "dsds";
-    this.MainPage$ = new Page();
+    this.loading = true;
+    
     this.CurrentPage = 1;
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getMainPage();
   }
 
   getMainPage() {
+    this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
       this.MainPage$ = res
+      this.loading = false;
     })
   }
 
+
+
   onScroll() {
+
     console.log('scrolled!!');
+
+    this.loadingScroll = true;
+
     this.CurrentPage++;
 
       this.getMainPageFromApi().subscribe(res => {
@@ -44,7 +55,7 @@ export class DemotivatorsComponent implements OnInit {
         });
   
   
-    
+        this.loadingScroll = false;   
         
       })
   
@@ -52,12 +63,18 @@ export class DemotivatorsComponent implements OnInit {
   
   getNextPage(){
     this.CurrentPage++;
-    
+    this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
 
+ 
+
       
+
+
+
       res.demotivatorCollection.forEach(element => {
         this.MainPage$.demotivatorCollection.unshift(element)
+        this.loading = false;
       });
 
 
