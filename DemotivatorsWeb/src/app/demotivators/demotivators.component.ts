@@ -1,5 +1,5 @@
 import { Page, Demotivator } from './Demotivator';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -13,11 +13,13 @@ import { Observable } from 'rxjs';
 export class DemotivatorsComponent implements OnInit {
 
   Title2: any;
-  MainPage$: Page;
+  @Input() MainPage$: Page;
+  CurrentPage : number;
 
   constructor(private http: HttpClient) {
     this.Title2 = "dsds";
     this.MainPage$ = new Page();
+    this.CurrentPage = 1;
   }
 
   ngOnInit() {
@@ -30,7 +32,23 @@ export class DemotivatorsComponent implements OnInit {
     })
   }
 
+  getNextPage(){
+    this.CurrentPage++;
+    
+    this.getMainPageFromApi().subscribe(res => {
+
+      
+      res.demotivatorCollection.forEach(element => {
+        this.MainPage$.demotivatorCollection.unshift(element)
+      });
+
+
+  
+      
+    })
+  }
+
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators/2');
+    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators/'+this.CurrentPage);
   }
 }
