@@ -58,6 +58,7 @@ namespace DemotivatorWebApi
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
+            
 
             app.UseMvc();
 

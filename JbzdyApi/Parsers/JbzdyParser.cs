@@ -1,7 +1,4 @@
 ﻿using JbzdyApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JbzdyApi.Parsers
 {
@@ -20,22 +17,22 @@ namespace JbzdyApi.Parsers
 
             var html = Helper.LoadHtml(domainUrl + "strona/" + page);
 
-            foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"image rolled\"]"))
+            foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"content-info\"]"))
             {
+                var title = htmlNode.SelectSingleNode("div/a")?.InnerText.TrimEnd().TrimStart();
+
+                var url = htmlNode.SelectSingleNode("div/div/a")?.Attributes["href"].Value?.ToString();
+
+                var imgUrl = htmlNode.SelectSingleNode("div/div/a/img")?.Attributes["src"].Value?.ToString();
 
                 rezult.JbzdyModels.Add(new JbzdyModel
                 {
-                    Url = htmlNode.SelectSingleNode("a").Attributes["href"].Value
-                    .ToString(),
-                    ImgUrl = htmlNode.SelectSingleNode("a/img").Attributes["src"].Value?.ToString()
+                    Title = title,
+                    Url = url,
+                    ImgUrl = imgUrl
                 });
-
             }
-
-
-
             return rezult;
-
         }
     }
 }

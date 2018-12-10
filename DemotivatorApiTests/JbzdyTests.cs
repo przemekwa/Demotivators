@@ -1,6 +1,7 @@
 ﻿using JbzdyApi;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -24,6 +25,21 @@ namespace DemotivatorApiTests
            var result= JbzdyApi.GetPage(2);
 
             Assert.Equal(8, result.JbzdyModels.Count);
+        }
+
+         [Fact]
+        public void GetPageData()
+        {
+           var result= JbzdyApi.GetPage(1);
+
+            Assert.NotEmpty(result.JbzdyModels);
+
+            var first = result.JbzdyModels.First();
+
+            Assert.NotEmpty(first.Title);
+            Assert.NotEmpty(first.ImgUrl);
+            Assert.NotEmpty(first.Url);
+            
         }
     }
 }

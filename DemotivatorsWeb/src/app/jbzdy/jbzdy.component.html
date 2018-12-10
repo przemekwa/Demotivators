@@ -1,3 +1,22 @@
-<p>
-  jbzdy works!
-</p>
+<!-- <a  (click)="getNextPage()" class="rainbow-button" alt="Next Page"></a> -->
+
+
+<div  
+            infiniteScroll
+            [infiniteScrollDistance]="1"
+            [infiniteScrollThrottle]="50"
+            [infiniteScrollUpDistance]="2"
+            (scrolled)="onScroll()">
+
+            <div>Current Page {{CurrentPage}}</div>
+
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+
+    <div  *ngFor="let item of MainPage$.jbzdyModels">
+      <img src="{{item.imgUrl}}" />
+    </div>
+
+
+    
+</div>
