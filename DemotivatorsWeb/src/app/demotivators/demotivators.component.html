@@ -17,7 +17,7 @@
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 
     <div  *ngFor="let item of MainPage$.demotivatorCollection">
-      <img src="{{item.imgUrl}}" />
+      <a href="{{item.url}}"><img src="{{item.imgUrl}}" /></a>
     </div>
 
     <!-- <li *ngFor="let item of MainPage$.demotivatorVideoCollection">

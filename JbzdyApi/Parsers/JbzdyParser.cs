@@ -21,7 +21,7 @@ namespace JbzdyApi.Parsers
             {
                 var title = htmlNode.SelectSingleNode("div/a")?.InnerText.TrimEnd().TrimStart();
 
-                var url = htmlNode.SelectSingleNode("div/div/a")?.Attributes["href"].Value?.ToString();
+                var url = htmlNode.SelectSingleNode("div[@class=\"media\"]/div[@class=\"image rolled\"]/a")?.Attributes["href"].Value?.ToString();
 
                 var imgUrl = htmlNode.SelectSingleNode("div/div/a/img")?.Attributes["src"].Value?.ToString();
 

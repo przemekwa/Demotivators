@@ -15,12 +15,10 @@ export class DemotivatorsComponent implements OnInit {
   public loadingScroll = false;
   Title2: any;
   @Input() MainPage$: Page = new Page();
-  CurrentPage : number;
+  public CurrentPage : number;
 
   constructor(private http: HttpClient) {
-    this.Title2 = "dsds";
     this.loading = true;
-    
     this.CurrentPage = 1;
     this.loading = true;
     this.getMainPage();
