@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DemotivatorApi\DemotivatorApi.csproj" />
+    <ProjectReference Include="..\JbzdyApi\JbzdyApi.csproj" />
   </ItemGroup>
 
 </Project>

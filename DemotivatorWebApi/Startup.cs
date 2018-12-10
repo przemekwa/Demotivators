@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DemotivatorApi.Interface;
 using DemotivatorWebApi.ControllersLogic;
+using JbzdyApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,9 @@ namespace DemotivatorWebApi
 
             services.AddScoped<IDemotivatorApi, DemotivatorApi.DemotivatorApi>(sp => new DemotivatorApi.DemotivatorApi("http://demotywatory.pl/"));
             services.AddScoped<IDemotivatorsLogic, DemotivatorsLogic>();
+
+            services.AddScoped<IJbzdyApi, JbzdyApi.JbzdyApi>(sp=>new  JbzdyApi.JbzdyApi("https://jbzdy.pl/"));
+            services.AddScoped<IJbzdyLogic, JbzdyLogic>();
 
         }
 
