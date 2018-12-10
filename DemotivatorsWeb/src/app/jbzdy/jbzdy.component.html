@@ -11,7 +11,7 @@
             <div>Current Page {{CurrentPage}}</div>
 
 
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 
     <div  *ngFor="let item of MainPage$.jbzdyModels">
       <div class="title" >{{item.title}}</div>
