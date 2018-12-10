@@ -40,27 +40,16 @@ export class DemotivatorsComponent implements OnInit {
 
 
   onScroll() {
-
-    console.log('scrolled!!');
-
     this.loadingScroll = true;
-
     this.CurrentPage++;
-
-      this.getMainPageFromApi().subscribe(res => {
-
-      
+    this.getMainPageFromApi().subscribe(res => {
         res.demotivatorCollection.forEach(element => {
           this.MainPage$.demotivatorCollection.push(element)
         });
-  
-  
         this.loadingScroll = false;   
-        
       })
-  
   }
-  
+
   getNextPage(){
     this.CurrentPage++;
     this.loading = true;

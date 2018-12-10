@@ -7,9 +7,11 @@ import { DemotivatorsComponent } from './demotivators/demotivators.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientModule } from '@angular/common/http';
+import { JbzdyComponent } from './jbzdy/jbzdy.component';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
+  { path: 'jbzdy', component: JbzdyComponent },
   
 ];
 
@@ -17,6 +19,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DemotivatorsComponent,
+    JbzdyComponent,
   ],
   imports: [
     RouterModule.forRoot(
