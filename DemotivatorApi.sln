@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemotivatorApi", "DemotivatorApi\DemotivatorApi.csproj", "{1CC1DE58-C59A-4CAE-8695-B4A1B00C0134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorApi", "DemotivatorApi\DemotivatorApi.csproj", "{1CC1DE58-C59A-4CAE-8695-B4A1B00C0134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemotivatorApiTests", "DemotivatorApiTests\DemotivatorApiTests.csproj", "{613EA75E-41F8-4991-8595-454FF038A2A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorApiTests", "DemotivatorApiTests\DemotivatorApiTests.csproj", "{613EA75E-41F8-4991-8595-454FF038A2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemotivatorWebApi", "DemotivatorWebApi\DemotivatorWebApi.csproj", "{E5478743-4A3B-43DE-935F-FDA629626062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorWebApi", "DemotivatorWebApi\DemotivatorWebApi.csproj", "{E5478743-4A3B-43DE-935F-FDA629626062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JbzdyApi", "JbzdyApi\JbzdyApi.csproj", "{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E5478743-4A3B-43DE-935F-FDA629626062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5478743-4A3B-43DE-935F-FDA629626062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5478743-4A3B-43DE-935F-FDA629626062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
