@@ -8,4 +8,8 @@
     <Folder Include="Buldiers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.8.11" />
+  </ItemGroup>
+
 </Project>

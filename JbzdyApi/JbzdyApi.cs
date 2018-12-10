@@ -10,7 +10,7 @@ namespace JbzdyApi
 
         public JbzdyApi(string domainUrl)
         {
-            JbzdyParser = new JbzdyParser();
+            JbzdyParser = new JbzdyParser(domainUrl);
         }
 
         public Page GetPage(int page)
