@@ -31,7 +31,18 @@ export class DemotivatorsComponent implements OnInit {
   getMainPage() {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-      this.MainPage$ = res
+      
+      if (this.MainPage$.demotivators == undefined) {
+        this.MainPage$.demotivators = [];
+      }
+
+      res.demotivatorCollection.forEach(element => {
+        this.MainPage$.demotivators.push(element)
+      });
+
+      res.demotivatorVideoCollection.forEach(element => {
+        this.MainPage$.demotivators.push(element)
+      });
       this.loading = false;
     })
   }
@@ -42,9 +53,16 @@ export class DemotivatorsComponent implements OnInit {
     this.loadingScroll = true;
     this.CurrentPage++;
     this.getMainPageFromApi().subscribe(res => {
+      
         res.demotivatorCollection.forEach(element => {
-          this.MainPage$.demotivatorCollection.push(element)
+          this.MainPage$.demotivators.push(element)
         });
+
+        res.demotivatorVideoCollection.forEach(element => {
+          this.MainPage$.demotivators.push(element)
+        });
+
+
         this.loadingScroll = false;   
       })
   }

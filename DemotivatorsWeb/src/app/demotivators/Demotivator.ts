@@ -1,7 +1,8 @@
 export class Page {
     pageNumber: number;
     demotivatorCollection: Demotivator[];
-    demotivatorVideoCollection: Demotivator[]
+    demotivatorVideoCollection: Demotivator[];
+    demotivators: Demotivator[];
   }
 
   export class Demotivator {
