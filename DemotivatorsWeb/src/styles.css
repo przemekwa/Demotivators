@@ -8,6 +8,11 @@ html {
 
 }
 
+.title {
+  font-size: 45px;
+  color: white;
+}
+
 
 a {
     text-decoration:none;

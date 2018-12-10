@@ -22,11 +22,12 @@ export class DemotivatorsComponent implements OnInit {
     this.loading = true;
     
     this.CurrentPage = 1;
+    this.loading = true;
+    this.getMainPage();
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.getMainPage();
+  
   }
 
   getMainPage() {
@@ -54,21 +55,10 @@ export class DemotivatorsComponent implements OnInit {
     this.CurrentPage++;
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-
- 
-
-      
-
-
-
       res.demotivatorCollection.forEach(element => {
         this.MainPage$.demotivatorCollection.unshift(element)
         this.loading = false;
       });
-
-
-  
-      
     })
   }
 

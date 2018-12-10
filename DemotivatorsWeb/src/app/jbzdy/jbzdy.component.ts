@@ -15,12 +15,15 @@ export class JbzdyComponent implements OnInit {
   CurrentPage : number;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
 
-  ngOnInit() {
     this.loading = true;
     this.CurrentPage=1;
     this.getMainPage();
+  }
+
+  ngOnInit() {
+ 
   }
 
   getMainPage() {

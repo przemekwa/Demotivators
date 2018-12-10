@@ -14,6 +14,7 @@
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 
     <div  *ngFor="let item of MainPage$.jbzdyModels">
+      <div class="title" >{{item.title}}</div>
       <img src="{{item.imgUrl}}" />
     </div>
 

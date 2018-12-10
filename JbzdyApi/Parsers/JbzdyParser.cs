@@ -25,6 +25,11 @@ namespace JbzdyApi.Parsers
 
                 var imgUrl = htmlNode.SelectSingleNode("div/div/a/img")?.Attributes["src"].Value?.ToString();
 
+                if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(url) || string.IsNullOrEmpty(imgUrl))
+                {
+                    continue;
+                }
+
                 rezult.JbzdyModels.Add(new JbzdyModel
                 {
                     Title = title,
