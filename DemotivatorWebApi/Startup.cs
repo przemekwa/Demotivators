@@ -37,6 +37,8 @@ namespace DemotivatorWebApi
             services.AddScoped<IJbzdyApi, JbzdyApi.JbzdyApi>(sp=>new  JbzdyApi.JbzdyApi("https://jbzdy.pl/"));
             services.AddScoped<IJbzdyLogic, JbzdyLogic>();
 
+            services.AddScoped<IFavouriteLogic, FavouriteLogic>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

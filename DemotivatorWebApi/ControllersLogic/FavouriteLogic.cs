@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DemotivatorWebApi.ControllersLogic
 {
-    public class FavouriteLogic
+    public class FavouriteLogic : IFavouriteLogic
     {
         public IEnumerable<FavouriteModel> Get(string userName)
         {
             using (var db = new LiteDatabase($"{userName}.db"))
             {
-              return db.GetCollection<FavouriteModel>("favourite").Find(Query.EQ("IsDeleted", false));
+                return db.GetCollection<FavouriteModel>("favourite").Find(Query.EQ("IsDeleted", false));
             }
         }
 
@@ -22,7 +22,7 @@ namespace DemotivatorWebApi.ControllersLogic
         {
             using (var db = new LiteDatabase($"{userName}.db"))
             {
-               return db.GetCollection<FavouriteModel>("favourite").FindAll();
+                return db.GetCollection<FavouriteModel>("favourite").FindAll();
             }
         }
 
@@ -56,7 +56,7 @@ namespace DemotivatorWebApi.ControllersLogic
                 model.UpdateDate = DateTime.Now;
 
                 col.Update(model);
-               
+
             }
         }
 
