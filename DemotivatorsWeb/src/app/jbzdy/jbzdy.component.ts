@@ -15,7 +15,7 @@ export class JbzdyComponent implements OnInit {
   CurrentPage : number;
 
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
     this.loading = true;
     this.CurrentPage=1;
@@ -23,7 +23,7 @@ export class JbzdyComponent implements OnInit {
   }
 
   ngOnInit() {
- 
+
   }
 
   getMainPage() {
@@ -41,10 +41,10 @@ export class JbzdyComponent implements OnInit {
         res.jbzdyModels.forEach(element => {
           this.MainPage$.jbzdyModels.push(element)
         });
-        this.loadingScroll = false;   
+        this.loadingScroll = false;
       })
   }
-  
+
   getNextPage(){
     this.CurrentPage++;
     this.loading = true;
@@ -58,7 +58,7 @@ export class JbzdyComponent implements OnInit {
 
 
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/jbzdy/'+this.CurrentPage);
+    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/jbzdy/'+this.CurrentPage);
   }
 
 }

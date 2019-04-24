@@ -25,13 +25,13 @@ export class DemotivatorsComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
   }
 
   getMainPage() {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-      
+
       if (this.MainPage$.demotivators == undefined) {
         this.MainPage$.demotivators = [];
       }
@@ -53,7 +53,7 @@ export class DemotivatorsComponent implements OnInit {
     this.loadingScroll = true;
     this.CurrentPage++;
     this.getMainPageFromApi().subscribe(res => {
-      
+
         res.demotivatorCollection.forEach(element => {
           this.MainPage$.demotivators.push(element)
         });
@@ -63,7 +63,7 @@ export class DemotivatorsComponent implements OnInit {
         });
 
 
-        this.loadingScroll = false;   
+        this.loadingScroll = false;
       })
   }
 
@@ -79,6 +79,6 @@ export class DemotivatorsComponent implements OnInit {
   }
 
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('https://demotivatorwebapi.azurewebsites.net/api/demotivators/'+this.CurrentPage);
+    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/demotivators/'+this.CurrentPage);
   }
 }
