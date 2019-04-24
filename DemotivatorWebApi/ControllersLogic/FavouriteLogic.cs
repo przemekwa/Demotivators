@@ -38,9 +38,26 @@ namespace DemotivatorWebApi.ControllersLogic
             }
         }
 
-        public void Delete(string userName, FavouriteModel model)
+        public void Delete(string userName, int id)
         {
+            using (var db = new LiteDatabase($"{userName}.db"))
+            {
+                var model = db.GetCollection<FavouriteModel>("favourite").FindById(id);
 
+                var col = db.GetCollection<FavouriteModel>("favourite");
+
+                if (col == null)
+                {
+                    return;
+                }
+
+                model.IsDeleted = true;
+
+                model.UpdateDate = DateTime.Now;
+
+                col.Update(model);
+               
+            }
         }
 
         public void DeleteUser(string userName)
