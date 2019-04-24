@@ -11,8 +11,9 @@ import { JbzdyComponent } from './jbzdy/jbzdy.component';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
+  { path: 'demotivators', component: DemotivatorsComponent },
   { path: 'jbzdy', component: JbzdyComponent },
-  
+
 ];
 
 @NgModule({

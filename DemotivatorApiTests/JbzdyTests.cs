@@ -16,7 +16,7 @@ namespace DemotivatorApiTests
         {
            var result= JbzdyApi.GetMainPage();
 
-            Assert.Equal(8, result.JbzdyModels.Count);
+            Assert.Equal(6, result.JbzdyModels.Count);
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace DemotivatorApiTests
         {
            var result= JbzdyApi.GetPage(2);
 
-            Assert.Equal(8, result.JbzdyModels.Count);
+            Assert.Equal(7, result.JbzdyModels.Count);
         }
 
          [Fact]
