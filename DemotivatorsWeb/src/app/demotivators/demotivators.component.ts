@@ -15,7 +15,7 @@ export class DemotivatorsComponent implements OnInit {
   public loadingScroll = false;
   Title2: any;
   @Input() MainPage$: Page = new Page();
-  public CurrentPage : number;
+  public CurrentPage: number;
 
   constructor(private http: HttpClient) {
     this.loading = true;
@@ -37,14 +37,14 @@ export class DemotivatorsComponent implements OnInit {
       }
 
       res.demotivatorCollection.forEach(element => {
-        this.MainPage$.demotivators.push(element)
+        this.MainPage$.demotivators.push(element);
       });
 
       res.demotivatorVideoCollection.forEach(element => {
-        this.MainPage$.demotivators.push(element)
+        this.MainPage$.demotivators.push(element);
       });
       this.loading = false;
-    })
+    });
   }
 
 
@@ -55,30 +55,30 @@ export class DemotivatorsComponent implements OnInit {
     this.getMainPageFromApi().subscribe(res => {
 
         res.demotivatorCollection.forEach(element => {
-          this.MainPage$.demotivators.push(element)
+          this.MainPage$.demotivators.push(element);
         });
 
         res.demotivatorVideoCollection.forEach(element => {
-          this.MainPage$.demotivators.push(element)
+          this.MainPage$.demotivators.push(element);
         });
 
 
         this.loadingScroll = false;
-      })
+      });
   }
 
-  getNextPage(){
+  getNextPage() {
     this.CurrentPage++;
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
       res.demotivatorCollection.forEach(element => {
-        this.MainPage$.demotivatorCollection.unshift(element)
+        this.MainPage$.demotivatorCollection.unshift(element);
         this.loading = false;
       });
-    })
+    });
   }
 
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/demotivators/'+this.CurrentPage);
+    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/demotivators/' + this.CurrentPage);
   }
 }
