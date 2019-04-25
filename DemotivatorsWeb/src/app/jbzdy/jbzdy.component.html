@@ -1,24 +1,12 @@
-<!-- <a  (click)="getNextPage()" class="rainbow-button" alt="Next Page"></a> -->
-
-
-<div  
-            infiniteScroll
-            [infiniteScrollDistance]="1"
-            [infiniteScrollThrottle]="50"
-            [infiniteScrollUpDistance]="2"
-            (scrolled)="onScroll()">
-
-            <div>Current Page {{CurrentPage}}</div>
-
-
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
-
-    <div  *ngFor="let item of MainPage$.jbzdyModels">
+<div infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" [infiniteScrollUpDistance]="2" (scrolled)="onScroll()">
+  <div>Current Page {{CurrentPage}}</div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+    <div class="text-center"  *ngFor="let item of MainPage$.jbzdyModels">
       <div class="title" >{{item.title}}</div>
-      <a href="{{item.url}}"> <img src="{{item.imgUrl}}" /> </a>
+      <a href="{{item.url}}">
+        <img class="img-fluid" src="{{item.imgUrl}}" />
+      </a>
+      <!-- <button type="button" class="btn btn-lg btn-block btn-primary text-center" >Podoba mi się</button> -->
     </div>
-
-
-    
 </div>
 

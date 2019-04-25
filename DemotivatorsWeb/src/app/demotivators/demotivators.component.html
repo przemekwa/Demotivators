@@ -1,58 +1,26 @@
-<!-- <a  (click)="getNextPage()" class="rainbow-button" alt="Next Page"></a> -->
-
-
-<div  
-            infiniteScroll
-            [infiniteScrollDistance]="1"
-            [infiniteScrollThrottle]="50"
-            [infiniteScrollUpDistance]="2"
-            (scrolled)="onScroll()">
-
-            <div>Current Page {{CurrentPage}}</div>
-
-           
 
 
 
-<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+<div infiniteScroll [infiniteScrollDistance]="1"  [infiniteScrollThrottle]="50"  [infiniteScrollUpDistance]="2"  (scrolled)="onScroll()">
+  <div>Current Page {{CurrentPage}}</div>
+   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
 
-    <div  *ngFor="let item of MainPage$.demotivators">
-     
-       
-     
-     
+
+
+
+
+
+   <div  *ngFor="let item of MainPage$.demotivators" class="text-center">
       <a href="{{item.url}}">
-        
-      
-        
-        <img src="{{item.imgUrl}}" />
-      
-        
+        <img class="img-fluid" src="{{item.imgUrl}}" />
         <div *ngIf="item.videoUrl">
-            <video controls> 
-                <source src="{{item.videoUrl}}" type="video/mp4"/>   
-        
-              </video>
-          
+            <video class="img-fluid"  controls>
+                <source src="{{item.videoUrl}}" type="video/mp4"/>
+            </video>
         </div>
-
-
       </a>
-
-
-     
-
-
     </div>
 
-    <!-- <li *ngFor="let item of MainPage$.demotivatorVideoCollection">
-        <img src="{{item.imgUrl}}" />
-      <video controls> 
-        <source src="{{item.videoUrl}}" type="video/mp4">   
 
-      </video>
-      
-      
-    </li> -->
-    
+
 </div>
