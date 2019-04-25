@@ -7,6 +7,7 @@ import {
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { stringify } from "@angular/core/src/util";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-demotivators",
@@ -19,8 +20,14 @@ export class DemotivatorsComponent implements OnInit {
   Title2: any;
   @Input() MainPage$: Page = new Page();
   public CurrentPage: number;
+  public PageNumber: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, route: ActivatedRoute) {
+     route.params.subscribe(params => {
+      this.PageNumber = params['pageNumber'];
+   });
+
+   console.log(this.PageNumber);
     this.loading = true;
     this.CurrentPage = 1;
     this.loading = true;

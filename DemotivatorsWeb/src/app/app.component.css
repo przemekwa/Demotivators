@@ -1,3 +1,9 @@
 html {
-    background-color: black; 
+    background-color: black;
   }
+.error {
+    margin-top: .25rem;
+    margin-right: .25rem;
+    font-size: 80%;
+    color: #28a745;
+}

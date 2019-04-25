@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+interface AppFormValue {
+  pageNumber: number;
+}
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +12,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DemotivatorsWeb';
+
+  onSubmit(formValue: AppFormValue) {
+  console.log(formValue.pageNumber)
+}
+
 }
 
 

@@ -8,12 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientModule } from '@angular/common/http';
 import { JbzdyComponent } from './jbzdy/jbzdy.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
+  { path: 'demotivators/:pageNumber',    component: DemotivatorsComponent},
   { path: 'demotivators', component: DemotivatorsComponent },
   { path: 'jbzdy', component: JbzdyComponent },
-
 ];
 
 @NgModule({
@@ -27,12 +28,13 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true }
     ),
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
     RouterModule,
-    NgxLoadingModule
+    NgxLoadingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,9 +15,12 @@
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2 disabled" type="text" placeholder="Go to page" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Go to</button>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="form-inline my-2 my-lg-0">
+      <p  *ngIf="pageNumberInput.hasError('pattern')" class="error">Podaj liczbę.</p>
+      <input  #pageNumberInput="ngModel" name="pageNumber" ngModel pattern="[0-9]+"  class="form-control mr-sm-2"  type="text" placeholder="Go to page" aria-label="Search">
+
+
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to</button>
       <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Random</button>
     </form>
   </div>
