@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Page } from './Jbzdy';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jbzdy',
@@ -15,10 +16,11 @@ export class JbzdyComponent implements OnInit {
   CurrentPage : number;
 
 
-  constructor(private http: HttpClient) {
-
+  constructor(private http: HttpClient, route: ActivatedRoute) {
+    route.params.subscribe(params => {
+      this.CurrentPage = params['pageNumber'] === undefined ? 1 : params['pageNumber'];
+   });
     this.loading = true;
-    this.CurrentPage=1;
     this.getMainPage();
   }
 

@@ -24,12 +24,10 @@ export class DemotivatorsComponent implements OnInit {
 
   constructor(private http: HttpClient, route: ActivatedRoute) {
      route.params.subscribe(params => {
-      this.PageNumber = params['pageNumber'];
+      this.CurrentPage = params['pageNumber'] === undefined ? 1 : params['pageNumber'];
    });
 
-   console.log(this.PageNumber);
     this.loading = true;
-    this.CurrentPage = 1;
     this.loading = true;
     this.getMainPage();
   }
@@ -39,7 +37,7 @@ export class DemotivatorsComponent implements OnInit {
   getMainPage() {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-      if (this.MainPage$.demotivators == undefined) {
+      if (this.MainPage$.demotivators === undefined) {
         this.MainPage$.demotivators = [];
       }
 

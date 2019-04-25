@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
   { path: 'demotivators/:pageNumber',    component: DemotivatorsComponent},
   { path: 'demotivators', component: DemotivatorsComponent },
+  { path: 'jbzdy/:pageNumber', component: JbzdyComponent },
   { path: 'jbzdy', component: JbzdyComponent },
 ];
 
