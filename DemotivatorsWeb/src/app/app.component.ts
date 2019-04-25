@@ -20,7 +20,18 @@ export class AppComponent {
   title = 'DemotivatorsWeb';
 
   onSubmit(formValue: AppFormValue) {
-  this.router.navigate(['/demotivators/' + formValue.pageNumber]);
+
+    if (this.router.url.indexOf('jbzdy') > 0 ) {
+      this.router.navigate(['/jbzdy/' + formValue.pageNumber]);
+      return;
+    }
+
+    if (this.router.url.indexOf('demotivators') > 0 ) {
+      this.router.navigate(['/demotivators/' + formValue.pageNumber]);
+      return;
+    }
+
+    this.router.navigate(['/demotivators/' + formValue.pageNumber]);
 }
 }
 

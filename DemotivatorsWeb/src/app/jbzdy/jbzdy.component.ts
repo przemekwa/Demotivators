@@ -13,14 +13,19 @@ export class JbzdyComponent implements OnInit {
   public loading = false;
   public loadingScroll = false;
   @Input() MainPage$: Page = new Page();
-  CurrentPage : number;
+  CurrentPage: number;
 
 
   constructor(private http: HttpClient, route: ActivatedRoute) {
     route.params.subscribe(params => {
-      this.CurrentPage = params['pageNumber'] === undefined ? 1 : params['pageNumber'];
+      if (params['pageNumber'] !== undefined) {
+        this.CurrentPage = params['pageNumber'];
+        this.MainPage$.jbzdyModels = [];
+        this.getMainPage();
+     } else {
+       this.CurrentPage = 1;
+     }
    });
-    this.loading = true;
     this.getMainPage();
   }
 
@@ -31,9 +36,9 @@ export class JbzdyComponent implements OnInit {
   getMainPage() {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-      this.MainPage$ = res
+      this.MainPage$ = res;
       this.loading = false;
-    })
+    });
   }
 
   onScroll() {
@@ -41,7 +46,7 @@ export class JbzdyComponent implements OnInit {
     this.CurrentPage++;
     this.getMainPageFromApi().subscribe(res => {
         res.jbzdyModels.forEach(element => {
-          this.MainPage$.jbzdyModels.push(element)
+          this.MainPage$.jbzdyModels.push(element);
         });
         this.loadingScroll = false;
       })
@@ -52,7 +57,7 @@ export class JbzdyComponent implements OnInit {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
       res.jbzdyModels.forEach(element => {
-        this.MainPage$.jbzdyModels.unshift(element)
+        this.MainPage$.jbzdyModels.unshift(element);
         this.loading = false;
       });
     })
@@ -60,7 +65,7 @@ export class JbzdyComponent implements OnInit {
 
 
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/jbzdy/'+this.CurrentPage);
+    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/jbzdy/' + this.CurrentPage);
   }
 
 }

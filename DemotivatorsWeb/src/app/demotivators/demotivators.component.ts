@@ -8,6 +8,7 @@ import {
 import { Observable } from "rxjs";
 import { stringify } from "@angular/core/src/util";
 import { ActivatedRoute } from '@angular/router';
+import { initDomAdapter } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: "app-demotivators",
@@ -20,19 +21,22 @@ export class DemotivatorsComponent implements OnInit {
   Title2: any;
   @Input() MainPage$: Page = new Page();
   public CurrentPage: number;
-  public PageNumber: number;
 
   constructor(private http: HttpClient, route: ActivatedRoute) {
-     route.params.subscribe(params => {
-      this.CurrentPage = params['pageNumber'] === undefined ? 1 : params['pageNumber'];
+    route.params.subscribe(params => {
+      if (params['pageNumber'] !== undefined) {
+        this.CurrentPage = params['pageNumber'];
+        this.MainPage$.demotivators = [];
+        this.getMainPage();
+     } else {
+       this.CurrentPage = 1;
+     }
    });
-
-    this.loading = true;
-    this.loading = true;
-    this.getMainPage();
+   this.getMainPage();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   getMainPage() {
     this.loading = true;
@@ -80,6 +84,7 @@ export class DemotivatorsComponent implements OnInit {
   }
 
   getMainPageFromApi(): Observable<Page> {
+    console.log("getMainPageFromApi "+this.CurrentPage)
     return this.http.get<Page>(
       "http://www.demotivatorapi.hostingasp.pl/api/demotivators/" +
         this.CurrentPage
