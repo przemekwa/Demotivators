@@ -63,10 +63,6 @@ namespace DemotivatorWebApi
             
 
             app.UseMvc();
-
-
-
-
         }
     }
 }

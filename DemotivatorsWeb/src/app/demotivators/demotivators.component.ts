@@ -1,14 +1,17 @@
-import { Page } from './Demotivator';
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-
+import { Page } from "./Demotivator";
+import { Component, OnInit, Input } from "@angular/core";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse
+} from "@angular/common/http";
+import { Observable } from "rxjs";
+import { stringify } from "@angular/core/src/util";
 
 @Component({
-  selector: 'app-demotivators',
-  templateUrl: './demotivators.component.html',
-  styleUrls: ['./demotivators.component.css']
+  selector: "app-demotivators",
+  templateUrl: "./demotivators.component.html",
+  styleUrls: ["./demotivators.component.css"]
 })
 export class DemotivatorsComponent implements OnInit {
   public loading = false;
@@ -24,14 +27,11 @@ export class DemotivatorsComponent implements OnInit {
     this.getMainPage();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   getMainPage() {
     this.loading = true;
     this.getMainPageFromApi().subscribe(res => {
-
       if (this.MainPage$.demotivators == undefined) {
         this.MainPage$.demotivators = [];
       }
@@ -47,24 +47,20 @@ export class DemotivatorsComponent implements OnInit {
     });
   }
 
-
-
   onScroll() {
     this.loadingScroll = true;
     this.CurrentPage++;
     this.getMainPageFromApi().subscribe(res => {
-
-        res.demotivatorCollection.forEach(element => {
-          this.MainPage$.demotivators.push(element);
-        });
-
-        res.demotivatorVideoCollection.forEach(element => {
-          this.MainPage$.demotivators.push(element);
-        });
-
-
-        this.loadingScroll = false;
+      res.demotivatorCollection.forEach(element => {
+        this.MainPage$.demotivators.push(element);
       });
+
+      res.demotivatorVideoCollection.forEach(element => {
+        this.MainPage$.demotivators.push(element);
+      });
+
+      this.loadingScroll = false;
+    });
   }
 
   getNextPage() {
@@ -79,6 +75,31 @@ export class DemotivatorsComponent implements OnInit {
   }
 
   getMainPageFromApi(): Observable<Page> {
-    return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/demotivators/' + this.CurrentPage);
+    return this.http.get<Page>(
+      "http://www.demotivatorapi.hostingasp.pl/api/demotivators/" +
+        this.CurrentPage
+    );
+  }
+
+  addFavorites() {
+    let model = {
+      userName: "Przemek",
+      FavouriteModel: {
+        Url: "Link2",
+        Title: "ette2"
+      }
+    };
+
+    //this.http.post('https://localhost:44300/api/favourite', model).
+    this.http
+      .post("http://www.demotivatorapi.hostingasp.pl/api/favourite", model)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 }
