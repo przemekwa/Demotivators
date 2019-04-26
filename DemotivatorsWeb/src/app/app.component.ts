@@ -26,6 +26,7 @@ export class AppComponent {
 
 
     if (this.router.url.indexOf('jbzdy') > 0 ) {
+      this.router.navigate(['/jbzdy/' + pageNumberjbzb]);
       return;
     }
 
