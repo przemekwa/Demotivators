@@ -9,6 +9,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { HttpClientModule } from '@angular/common/http';
 import { JbzdyComponent } from './jbzdy/jbzdy.component';
 import { FormsModule } from '@angular/forms';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
@@ -16,6 +17,8 @@ const appRoutes: Routes = [
   { path: 'demotivators', component: DemotivatorsComponent },
   { path: 'jbzdy/:pageNumber', component: JbzdyComponent },
   { path: 'jbzdy', component: JbzdyComponent },
+  { path: 'favorites/:userName', component: FavoritesComponent },
+  { path: 'favorites', component: FavoritesComponent },
 ];
 
 @NgModule({
@@ -23,6 +26,7 @@ const appRoutes: Routes = [
     AppComponent,
     DemotivatorsComponent,
     JbzdyComponent,
+    FavoritesComponent,
   ],
   imports: [
     RouterModule.forRoot(

@@ -13,6 +13,9 @@
       <li class="nav-item">
           <a routerLink="/jbzdy" routerLinkActive="active" href="#" class="nav-link" alt="Demotywatory">Jbzdy</a>
       </li>
+      <li class="nav-item">
+        <a routerLink="/favorites" routerLinkActive="active" href="#" class="nav-link" alt="Demotywatory">Favorites</a>
+    </li>
 
     </ul>
     <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="form-inline my-2 my-lg-0">
@@ -21,8 +24,9 @@
 
 
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to</button>
-      <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Random</button>
+
     </form>
+    <button (click)="getRandom()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Random</button>
   </div>
 </nav>
 <router-outlet></router-outlet>

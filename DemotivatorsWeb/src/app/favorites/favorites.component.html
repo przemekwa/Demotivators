@@ -1,0 +1,14 @@
+
+
+<div  *ngFor="let item of Favorites" class="text-center">
+  <div>{{item.Title}}</div>
+  <a href="{{item.url}}">
+    <img class="img-fluid" src="{{item.url}}" />
+    <!-- <div *ngIf="item.videoUrl">
+        <video class="img-fluid"  controls>
+            <source src="{{item.videoUrl}}" type="video/mp4"/>
+        </video>
+    </div> -->
+  </a>
+</div>
+

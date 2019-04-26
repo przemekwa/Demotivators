@@ -84,7 +84,6 @@ export class DemotivatorsComponent implements OnInit {
   }
 
   getMainPageFromApi(): Observable<Page> {
-    console.log("getMainPageFromApi "+this.CurrentPage)
     return this.http.get<Page>(
       "http://www.demotivatorapi.hostingasp.pl/api/demotivators/" +
         this.CurrentPage

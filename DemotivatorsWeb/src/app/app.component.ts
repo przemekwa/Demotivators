@@ -19,6 +19,24 @@ export class AppComponent {
 
   title = 'DemotivatorsWeb';
 
+  getRandom()
+  {
+    const pageNumber = Math.floor(Math.random() * (3000 - 1 + 1)) + 1;
+    const pageNumberjbzb = Math.floor(Math.random() * (200 - 1 + 1)) + 1;
+
+
+    if (this.router.url.indexOf('jbzdy') > 0 ) {
+      return;
+    }
+
+    if (this.router.url.indexOf('demotivators') > 0 ) {
+      this.router.navigate(['/demotivators/' + pageNumber]);
+      return;
+    }
+
+    this.router.navigate(['/demotivators/' + pageNumber]);
+  }
+
   onSubmit(formValue: AppFormValue) {
 
     if (this.router.url.indexOf('jbzdy') > 0 ) {
