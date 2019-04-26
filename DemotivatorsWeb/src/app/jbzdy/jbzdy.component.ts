@@ -49,7 +49,7 @@ export class JbzdyComponent implements OnInit {
           this.MainPage$.jbzdyModels.push(element);
         });
         this.loadingScroll = false;
-      })
+      });
   }
 
   getNextPage(){
@@ -66,6 +66,29 @@ export class JbzdyComponent implements OnInit {
 
   getMainPageFromApi(): Observable<Page> {
     return this.http.get<Page>('http://www.demotivatorapi.hostingasp.pl/api/jbzdy/' + this.CurrentPage);
+  }
+
+
+  addFavorites(imgUrl: string) {
+
+    let model = {
+      userName: 'Przemek',
+      FavouriteModel: {
+        Url: imgUrl,
+        Title: 'Test Title'
+      }
+    };
+
+    this.http
+      .post('http://www.demotivatorapi.hostingasp.pl/api/favourite', model)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
 }

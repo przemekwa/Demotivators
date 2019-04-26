@@ -6,7 +6,8 @@
       <a href="{{item.url}}">
         <img class="img-fluid" src="{{item.imgUrl}}" />
       </a>
-      <!-- <button type="button" class="btn btn-lg btn-block btn-primary text-center" >Podoba mi się</button> -->
+      <button (click)="addFavorites(item.imgUrl)" class="btn btn-primary btn-add-favorite" type="button">Podoba mi się</button>
     </div>
+
 </div>
 

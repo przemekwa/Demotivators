@@ -9,3 +9,8 @@ video {
 .btn {
 width: auto;
 }
+
+.btn-add-favorite {
+  display: block;
+  margin: 0px auto
+}
