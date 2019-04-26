@@ -42,9 +42,14 @@ a {
   .rainbow-button:hover {
     animation:slidebg 2s linear infinite;
   }
-  
+
   @keyframes slidebg {
     to {
       background-position:20vw;
     }
+  }
+
+  .btn-add-favorite {
+    display: block;
+    margin: 0px auto
   }

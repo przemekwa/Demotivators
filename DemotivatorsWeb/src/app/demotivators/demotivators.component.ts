@@ -90,18 +90,18 @@ export class DemotivatorsComponent implements OnInit {
     );
   }
 
-  addFavorites() {
+  addFavorites(imgUrl: string) {
+
     let model = {
-      userName: "Przemek",
+      userName: 'Przemek',
       FavouriteModel: {
-        Url: "Link2",
-        Title: "ette2"
+        Url: imgUrl,
+        Title: 'Test Title'
       }
     };
 
-    //this.http.post('https://localhost:44300/api/favourite', model).
     this.http
-      .post("http://www.demotivatorapi.hostingasp.pl/api/favourite", model)
+      .post('http://www.demotivatorapi.hostingasp.pl/api/favourite', model)
       .subscribe(
         res => {
           console.log(res);

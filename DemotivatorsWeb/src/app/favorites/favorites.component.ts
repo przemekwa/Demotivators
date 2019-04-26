@@ -26,9 +26,7 @@ export class FavoritesComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.getUserFavorites('Przemek').subscribe(res => {
-
       this.Favorites = res;
-      console.log(this.Favorites);
     });
    }
 
