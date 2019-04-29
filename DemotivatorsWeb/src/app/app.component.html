@@ -37,7 +37,7 @@
 </nav>
 
 <app-modal id='custom-modal-1'>
-  <p>User name: <input type="text" [(ngModel)]="bodyText" /></p>
+  <p>User name: <input type="text" [(ngModel)]="bodyText" [(ngModel)]="userName" /></p>
   <button (click)="closeModal('custom-modal-1');">Close</button>
 </app-modal>
 <router-outlet></router-outlet>

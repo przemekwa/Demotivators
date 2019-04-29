@@ -93,7 +93,7 @@ export class DemotivatorsComponent implements OnInit {
   addFavorites(imgUrl: string) {
 
     let model = {
-      userName: 'Przemek',
+      userName: localStorage.getItem('userName'),
       FavouriteModel: {
         Url: imgUrl,
         Title: 'Test Title'

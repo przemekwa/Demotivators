@@ -1,5 +1,5 @@
 import { ModalService } from './modal.service';
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUser, faRandom } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,16 +12,25 @@ interface AppFormValue {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+
   faUser = faUser;
   faRandom = faRandom;
   public userName: string;
 
   constructor(private router: Router, private modalService: ModalService) {
-    this.userName = 'Przemek';
   }
 
   title = 'DemotivatorsWeb';
+
+  ngAfterViewInit(): void {
+    if(localStorage.getItem('userName') == null) {
+      this.modalService.open('custom-modal-1');
+    } else  {
+      this.userName = localStorage.getItem('userName');
+    }
+
+  }
 
   getRandom() {
     const pageNumber = Math.floor(Math.random() * (3000 - 1 + 1)) + 1;
@@ -47,6 +56,7 @@ export class AppComponent {
 
   closeModal(id: string) {
     this.modalService.close(id);
+    localStorage.setItem('userName', this.userName);
   }
 
   onSubmit(formValue: AppFormValue) {

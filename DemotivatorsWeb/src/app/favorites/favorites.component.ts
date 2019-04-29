@@ -25,7 +25,7 @@ export class FavoritesComponent implements OnInit {
   @Input() public Favorites: IFavorites[] = [];
 
   constructor(private http: HttpClient) {
-    this.getUserFavorites('Przemek').subscribe(res => {
+    this.getUserFavorites(localStorage.getItem('userName')).subscribe(res => {
       this.Favorites = res;
     });
    }
