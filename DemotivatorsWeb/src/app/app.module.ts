@@ -11,6 +11,7 @@ import { JbzdyComponent } from './jbzdy/jbzdy.component';
 import { FormsModule } from '@angular/forms';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ModalComponent } from './modal/modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     InfiniteScrollModule,
     RouterModule,
     NgxLoadingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

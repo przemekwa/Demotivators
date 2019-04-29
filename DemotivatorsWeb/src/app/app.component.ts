@@ -1,6 +1,7 @@
 import { ModalService } from './modal.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { faUser, faRandom } from '@fortawesome/free-solid-svg-icons';
 
 interface AppFormValue {
   pageNumber: number;
@@ -12,10 +13,12 @@ interface AppFormValue {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private bodyText: string;
+  faUser = faUser;
+  faRandom = faRandom;
+  public userName: string;
 
   constructor(private router: Router, private modalService: ModalService) {
-    this.bodyText = 'Działa';
+    this.userName = 'Przemek';
   }
 
   title = 'DemotivatorsWeb';
