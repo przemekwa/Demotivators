@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JbzdyComponent } from './jbzdy/jbzdy.component';
 import { FormsModule } from '@angular/forms';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ModalComponent } from './modal/modal.component';
 
 const appRoutes: Routes = [
   { path: 'd', component: DemotivatorsComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     DemotivatorsComponent,
     JbzdyComponent,
     FavoritesComponent,
+    ModalComponent,
   ],
   imports: [
     RouterModule.forRoot(

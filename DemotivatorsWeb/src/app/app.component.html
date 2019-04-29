@@ -15,18 +15,29 @@
       </li>
       <li class="nav-item">
         <a routerLink="/favorites" routerLinkActive="active" href="#" class="nav-link" alt="Demotywatory">Favorites</a>
-    </li>
+      </li>
 
     </ul>
+
+
+
+
+
     <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="form-inline my-2 my-lg-0">
       <p  *ngIf="pageNumberInput.hasError('pattern')" class="error">Podaj liczbę.</p>
       <input  #pageNumberInput="ngModel" name="pageNumber" ngModel pattern="[0-9]+"  class="form-control mr-sm-2"  type="text" placeholder="Go to page" aria-label="Search">
 
 
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to <span class="glyphicon glyphicon-search" aria-hidden="true"></span> ssd</button>
 
     </form>
     <button (click)="getRandom()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Random</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="openModal('custom-modal-1')">User Name</button>
   </div>
 </nav>
+
+<app-modal id='custom-modal-1'>
+  <p>User name: <input type="text" [(ngModel)]="bodyText" /></p>
+  <button (click)="closeModal('custom-modal-1');">Close</button>
+</app-modal>
 <router-outlet></router-outlet>
