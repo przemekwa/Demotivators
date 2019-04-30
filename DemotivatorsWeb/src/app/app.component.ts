@@ -1,7 +1,7 @@
 import { ModalService } from './modal.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser, faRandom } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faRandom, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 interface AppFormValue {
   pageNumber: number;
@@ -16,6 +16,7 @@ export class AppComponent implements AfterViewInit {
 
   faUser = faUser;
   faRandom = faRandom;
+  faPaperPlane = faPaperPlane;
   public userName: string;
 
   constructor(private router: Router, private modalService: ModalService) {
