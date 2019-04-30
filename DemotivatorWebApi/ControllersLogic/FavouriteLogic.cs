@@ -40,9 +40,19 @@ namespace DemotivatorWebApi.ControllersLogic
 
         public void Delete(string userName, int id)
         {
+            if (File.Exists($"{userName}.db") == false)
+            {
+                return;
+            }
+
             using (var db = new LiteDatabase($"{userName}.db"))
             {
                 var model = db.GetCollection<FavouriteModel>("favourite").FindById(id);
+
+                if (model == null)
+                {
+                    return;
+                }
 
                 var col = db.GetCollection<FavouriteModel>("favourite");
 
@@ -56,7 +66,6 @@ namespace DemotivatorWebApi.ControllersLogic
                 model.UpdateDate = DateTime.Now;
 
                 col.Update(model);
-
             }
         }
 

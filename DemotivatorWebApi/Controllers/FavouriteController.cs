@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace DemotivatorWebApi.Controllers
@@ -27,6 +28,12 @@ namespace DemotivatorWebApi.Controllers
            return this.FavouriteLogic.Get(userName);
         }
 
+        [HttpGet("{userName}/all")]
+        public IEnumerable<FavouriteModel> GetAll(string userName)
+        {
+            return this.FavouriteLogic.GetAll(userName);
+        }
+
         [HttpPost]
         public void Add([FromBody]FavouriteAddViewModel favouriteAddViewModel)
         {
@@ -36,6 +43,17 @@ namespace DemotivatorWebApi.Controllers
             }
 
            this.FavouriteLogic.Add(favouriteAddViewModel.UserName, favouriteAddViewModel.FavouriteModel);
+        }
+
+        [HttpDelete]
+        public void Delete(FavouriteDeleteViewModel favouriteDeleteViewModel)
+        {
+            if (favouriteDeleteViewModel == null || string.IsNullOrEmpty(favouriteDeleteViewModel.UserName))
+            {
+                return;
+            }
+
+            this.FavouriteLogic.Delete(favouriteDeleteViewModel.UserName, favouriteDeleteViewModel.Id);
         }
     }
 }
