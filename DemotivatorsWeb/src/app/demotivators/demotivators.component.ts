@@ -1,19 +1,18 @@
-import { Page } from "./Demotivator";
-import { Component, OnInit, Input } from "@angular/core";
+import { Page } from './Demotivator';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse
-} from "@angular/common/http";
-import { Observable } from "rxjs";
-import { stringify } from "@angular/core/src/util";
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { initDomAdapter } from '@angular/platform-browser/src/browser';
+import { FatvoritesService } from '../fatvorites.service';
 
 @Component({
-  selector: "app-demotivators",
-  templateUrl: "./demotivators.component.html",
-  styleUrls: ["./demotivators.component.css"]
+  selector: 'app-demotivators',
+  templateUrl: './demotivators.component.html',
+  styleUrls: ['./demotivators.component.css']
 })
 export class DemotivatorsComponent implements OnInit {
   public loading = false;
@@ -22,7 +21,7 @@ export class DemotivatorsComponent implements OnInit {
   @Input() MainPage$: Page = new Page();
   public CurrentPage: number;
 
-  constructor(private http: HttpClient, route: ActivatedRoute) {
+  constructor(private http: HttpClient, route: ActivatedRoute, private favoritesService: FatvoritesService) {
     route.params.subscribe(params => {
       if (params['pageNumber'] !== undefined) {
         this.CurrentPage = params['pageNumber'];
@@ -85,30 +84,11 @@ export class DemotivatorsComponent implements OnInit {
 
   getMainPageFromApi(): Observable<Page> {
     return this.http.get<Page>(
-      "http://www.demotivatorapi.hostingasp.pl/api/demotivators/" +
+      'http://www.demotivatorapi.hostingasp.pl/api/demotivators/' +
         this.CurrentPage
     );
   }
-
   addFavorites(imgUrl: string) {
-
-    let model = {
-      userName: localStorage.getItem('userName'),
-      FavouriteModel: {
-        Url: imgUrl,
-        Title: 'Test Title'
-      }
-    };
-
-    this.http
-      .post('http://www.demotivatorapi.hostingasp.pl/api/favourite', model)
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.favoritesService.addFavorites(imgUrl);
   }
 }

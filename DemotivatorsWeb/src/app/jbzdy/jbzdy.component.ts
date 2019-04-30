@@ -3,6 +3,7 @@ import { Page } from './Jbzdy';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { FatvoritesService } from '../fatvorites.service';
 
 @Component({
   selector: 'app-jbzdy',
@@ -16,7 +17,7 @@ export class JbzdyComponent implements OnInit {
   CurrentPage: number;
 
 
-  constructor(private http: HttpClient, route: ActivatedRoute) {
+  constructor(private http: HttpClient, route: ActivatedRoute, private favoritesService: FatvoritesService) {
     route.params.subscribe(params => {
       if (params['pageNumber'] !== undefined) {
         this.CurrentPage = params['pageNumber'];
@@ -70,25 +71,7 @@ export class JbzdyComponent implements OnInit {
 
 
   addFavorites(imgUrl: string) {
-
-    let model = {
-      userName: 'Przemek',
-      FavouriteModel: {
-        Url: imgUrl,
-        Title: 'Test Title'
-      }
-    };
-
-    this.http
-      .post('http://www.demotivatorapi.hostingasp.pl/api/favourite', model)
-      .subscribe(
-        res => {
-          console.log(res);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.favoritesService.addFavorites(imgUrl);
   }
 
 }
