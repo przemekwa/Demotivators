@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 interface IFavorites {
@@ -35,6 +35,30 @@ export class FavoritesComponent implements OnInit {
 
   getUserFavorites(userName: string): Observable<IFavorites[]> {
     return this.http.get<IFavorites[]>('http://www.demotivatorapi.hostingasp.pl/api/favourite/' + userName);
+  }
+
+  removeFavorites(favorite: IFavorites) {
+
+    this.deleteUserFavorite(localStorage.getItem('userName'), favorite.Id);
+  }
+
+  deleteUserFavorite(userName: string, id: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      body: {
+        Id: id,
+        UserName: userName
+      }
+  };
+
+    this.http.delete('http://www.demotivatorapi.hostingasp.pl/api/favourite/', httpOptions).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 

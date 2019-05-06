@@ -5,3 +5,8 @@ img  {
 video {
   margin-top: 40px;
 }
+
+.btn-add-favorite {
+  display: block;
+  margin: 0px auto
+}
