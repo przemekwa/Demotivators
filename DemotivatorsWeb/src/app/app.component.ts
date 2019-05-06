@@ -2,6 +2,7 @@ import { ModalService } from './modal.service';
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { faUser, faRandom, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from './user.service';
 
 interface AppFormValue {
   pageNumber: number;
@@ -19,18 +20,17 @@ export class AppComponent implements AfterViewInit {
   faPaperPlane = faPaperPlane;
   public userName: string;
 
-  constructor(private router: Router, private modalService: ModalService) {
+  constructor(private router: Router, private modalService: ModalService, private userService: UserService) {
   }
 
   title = 'DemotivatorsWeb';
 
   ngAfterViewInit(): void {
-    if(localStorage.getItem('userName') == null) {
-      this.modalService.open('custom-modal-1');
+    if(this.userService.IsLogged) {
+      this.userName = this.userService.UserName;
     } else  {
-      this.userName = localStorage.getItem('userName');
+      this.modalService.open('custom-modal-1');
     }
-
   }
 
   getRandom() {
@@ -51,13 +51,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   openModal(id: string) {
-    console.log('Działa');
     this.modalService.open(id);
   }
 
   closeModal(id: string) {
     this.modalService.close(id);
-    localStorage.setItem('userName', this.userName);
+    this.userService.UserName = this.userName;
   }
 
   onSubmit(formValue: AppFormValue) {

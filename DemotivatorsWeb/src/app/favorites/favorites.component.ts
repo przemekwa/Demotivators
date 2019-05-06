@@ -1,6 +1,8 @@
+import { UserService } from './../user.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FatvoritesService } from '../fatvorites.service';
 
 
 interface IFavorites {
@@ -24,8 +26,8 @@ export class FavoritesComponent implements OnInit {
 
   @Input() public Favorites: IFavorites[] = [];
 
-  constructor(private http: HttpClient) {
-    this.getUserFavorites(localStorage.getItem('userName')).subscribe(res => {
+  constructor(private http: HttpClient, private fatvoritesService: FatvoritesService, private userService: UserService) {
+    this.getUserFavorites(this.userService.UserName).subscribe(res => {
       this.Favorites = res;
     });
    }
@@ -38,28 +40,10 @@ export class FavoritesComponent implements OnInit {
   }
 
   removeFavorites(favorite: IFavorites) {
-
-    this.deleteUserFavorite(localStorage.getItem('userName'), favorite.Id);
+    this.fatvoritesService.deleteUserFavorite(this.userService.UserName, favorite.Id);
   }
 
-  deleteUserFavorite(userName: string, id: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      body: {
-        Id: id,
-        UserName: userName
-      }
-  };
 
-    this.http.delete('http://www.demotivatorapi.hostingasp.pl/api/favourite/', httpOptions).subscribe(
-      res => {
-        console.log(res);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
 
 
 }
