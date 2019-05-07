@@ -28,13 +28,19 @@ namespace DemotivatorWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .WithMethods("GET", "POST", "DELETE")
+                       .AllowAnyHeader();
+            }));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<IDemotivatorApi, DemotivatorApi.DemotivatorApi>(sp => new DemotivatorApi.DemotivatorApi("http://demotywatory.pl/"));
             services.AddScoped<IDemotivatorsLogic, DemotivatorsLogic>();
 
-            services.AddScoped<IJbzdyApi, JbzdyApi.JbzdyApi>(sp=>new  JbzdyApi.JbzdyApi("https://jbzdy.pl/"));
+            services.AddScoped<IJbzdyApi, JbzdyApi.JbzdyApi>(sp=> new JbzdyApi.JbzdyApi("https://jbzdy.pl/"));
             services.AddScoped<IJbzdyLogic, JbzdyLogic>();
 
             services.AddScoped<IFavouriteLogic, FavouriteLogic>();
@@ -54,13 +60,7 @@ namespace DemotivatorWebApi
             }
 
             app.UseHttpsRedirection();
-
-            app.UseCors(builder => builder
-                .WithOrigins("http://demotivators.hostingasp.pl")
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-            
-
+            app.UseCors("MyPolicy");
             app.UseMvc();
         }
     }

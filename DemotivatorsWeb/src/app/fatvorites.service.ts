@@ -18,14 +18,17 @@ export class FatvoritesService {
   deleteUserFavorite(userName: string, id: number) {
     console.log(id);
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200' }),
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       body: {
         Id: id,
         UserName: userName
       }
   };
 
-    this.http.delete(this.apiRootUrl, httpOptions).subscribe(
+    this.http.post(this.apiRootUrl + 'delete', {
+      Id: id,
+      UserName: userName
+    } ).subscribe(
       res => {
         console.log(res);
       },
