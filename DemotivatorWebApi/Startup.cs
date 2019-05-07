@@ -29,7 +29,7 @@ namespace DemotivatorWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<IDemotivatorApi, DemotivatorApi.DemotivatorApi>(sp => new DemotivatorApi.DemotivatorApi("http://demotywatory.pl/"));
             services.AddScoped<IDemotivatorsLogic, DemotivatorsLogic>();
@@ -56,10 +56,9 @@ namespace DemotivatorWebApi
             app.UseHttpsRedirection();
 
             app.UseCors(builder => builder
-                .AllowAnyOrigin()
+                .WithOrigins("http://demotivators.hostingasp.pl")
                 .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+                .AllowAnyHeader());
             
 
             app.UseMvc();

@@ -18,7 +18,7 @@ export class FatvoritesService {
   deleteUserFavorite(userName: string, id: number) {
     console.log(id);
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200' }),
       body: {
         Id: id,
         UserName: userName
