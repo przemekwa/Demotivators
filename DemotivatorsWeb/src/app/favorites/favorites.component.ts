@@ -5,12 +5,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FatvoritesService } from '../fatvorites.service';
 
 
-interface IFavorites {
-  Id: number;
-  Url: string;
-  Title: string;
-  UpdateDate: string;
-  IsDeleted: boolean;
+export interface IFavorites {
+  id: number;
+  url: string;
+  title: string;
+  updateDate: string;
+  isDeleted: boolean;
 }
 
 @Component({
@@ -22,12 +22,10 @@ interface IFavorites {
 
 
 export class FavoritesComponent implements OnInit {
-
-
   @Input() public Favorites: IFavorites[] = [];
 
   constructor(private http: HttpClient, private fatvoritesService: FatvoritesService, private userService: UserService) {
-    this.getUserFavorites(this.userService.UserName).subscribe(res => {
+    this.fatvoritesService.getFavorites(this.userService.UserName).subscribe(res => {
       this.Favorites = res;
     });
    }
@@ -35,12 +33,8 @@ export class FavoritesComponent implements OnInit {
   ngOnInit() {
   }
 
-  getUserFavorites(userName: string): Observable<IFavorites[]> {
-    return this.http.get<IFavorites[]>('http://www.demotivatorapi.hostingasp.pl/api/favourite/' + userName);
-  }
-
   removeFavorites(favorite: IFavorites) {
-    this.fatvoritesService.deleteUserFavorite(this.userService.UserName, favorite.Id);
+    this.fatvoritesService.deleteUserFavorite(this.userService.UserName, favorite.id);
   }
 
 

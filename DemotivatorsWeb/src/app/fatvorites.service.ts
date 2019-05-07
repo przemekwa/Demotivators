@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IFavorites } from './favorites/favorites.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FatvoritesService {
+  private apiRootUrl = 'http://www.demotivatorapi.hostingasp.pl/api/favourite/';
 
   constructor(private http: HttpClient) { }
 
+  getFavorites(userName: string): Observable<IFavorites[]> {
+    return this.http.get<IFavorites[]>(this.apiRootUrl  + userName);
+  }
+
   deleteUserFavorite(userName: string, id: number) {
+    console.log(id);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       body: {
@@ -17,7 +25,7 @@ export class FatvoritesService {
       }
   };
 
-    this.http.delete('http://www.demotivatorapi.hostingasp.pl/api/favourite/', httpOptions).subscribe(
+    this.http.delete(this.apiRootUrl, httpOptions).subscribe(
       res => {
         console.log(res);
       },
@@ -28,6 +36,7 @@ export class FatvoritesService {
   }
 
   addFavorites(imgUrl: string) {
+    console.log(imgUrl);
 
     const currentUser = localStorage.getItem('userName');
 
@@ -44,7 +53,7 @@ export class FatvoritesService {
     };
 
     this.http
-      .post('http://www.demotivatorapi.hostingasp.pl/api/favourite', model)
+      .post(this.apiRootUrl, model)
       .subscribe(
         res => {
           console.log(res);
