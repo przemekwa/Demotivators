@@ -14,7 +14,6 @@ namespace DemotivatorWebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("MyPolicy")]
     public class FavouriteController : ControllerBase
     {
         public IFavouriteLogic FavouriteLogic { get; set; }
@@ -47,8 +46,8 @@ namespace DemotivatorWebApi.Controllers
            this.FavouriteLogic.Add(favouriteAddViewModel.UserName, favouriteAddViewModel.FavouriteModel);
         }
 
-        [HttpPost("delete")]
-        public void Delete([FromBody]FavouriteDeleteViewModel favouriteDeleteViewModel)
+        [HttpDelete]
+        public void DeleteWithHtmlDelete(FavouriteDeleteViewModel favouriteDeleteViewModel)
         {
             if (favouriteDeleteViewModel == null || string.IsNullOrEmpty(favouriteDeleteViewModel.UserName))
             {

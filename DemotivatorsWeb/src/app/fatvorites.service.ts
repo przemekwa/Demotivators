@@ -23,10 +23,7 @@ export class FatvoritesService {
 
 
 
-    this.http.post(this.apiRootUrl + 'delete', {
-      Id: id,
-      UserName: userName
-    }).subscribe(
+    this.http.delete(this.apiRootUrl, httpOptions).subscribe(
       res => {
         console.log(res);
       },
