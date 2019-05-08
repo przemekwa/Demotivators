@@ -16,29 +16,28 @@ export class FatvoritesService {
   }
 
   deleteUserFavorite(userName: string, id: number) {
-    console.log(id);
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      body: {
-        Id: id,
-        UserName: userName
-      }
+      body: {Id: id, UserName: userName}};
+
+
 
     this.http.post(this.apiRootUrl + 'delete', {
       Id: id,
       UserName: userName
-    } ).subscribe(
+    }).subscribe(
       res => {
         console.log(res);
       },
       error => {
         console.log(error);
       }
-    );
+    )
   }
 
+
   addFavorites(imgUrl: string) {
-    console.log(imgUrl);
 
     const currentUser = localStorage.getItem('userName');
 
@@ -46,7 +45,7 @@ export class FatvoritesService {
       return;
     }
 
-    let model = {
+    const model = {
       userName: localStorage.getItem('userName'),
       FavouriteModel: {
         Url: imgUrl,
