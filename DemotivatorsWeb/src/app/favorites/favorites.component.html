@@ -1,9 +1,9 @@
 
 
-<div  *ngFor="let item of Favorites" class="text-center">
+<div  *ngFor="let item of Favorites" class="text-center" [hidden]="item.isDeleted">
   <div>{{item.title}}</div>
   <a href="{{item.url}}">
-    <img class="img-fluid" src="{{item.url}}" />
+    <img class="img-fluid" src="{{item.url}}"  />
     <!-- <div *ngIf="item.videoUrl">
         <video class="img-fluid"  controls>
             <source src="{{item.videoUrl}}" type="video/mp4"/>
@@ -11,5 +11,6 @@
     </div> -->
   </a>
   <button (click)="removeFavorites(item)" class="btn btn-primary btn-add-favorite" type="button">Znudziło mi się</button>
+
 </div>
 

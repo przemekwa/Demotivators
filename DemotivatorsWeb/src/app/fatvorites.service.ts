@@ -23,7 +23,6 @@ export class FatvoritesService {
         Id: id,
         UserName: userName
       }
-  };
 
     this.http.post(this.apiRootUrl + 'delete', {
       Id: id,

@@ -34,6 +34,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   removeFavorites(favorite: IFavorites) {
+    favorite.isDeleted = true;
     this.fatvoritesService.deleteUserFavorite(this.userService.UserName, favorite.id);
   }
 
