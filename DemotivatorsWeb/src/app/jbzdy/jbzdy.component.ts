@@ -44,6 +44,7 @@ export class JbzdyComponent implements OnInit {
 
   onScroll() {
     this.loadingScroll = true;
+    window.history.replaceState({}, '', `/jbzdy/${this.CurrentPage}`);
     this.CurrentPage++;
     this.getMainPageFromApi().subscribe(res => {
         res.jbzdyModels.forEach(element => {

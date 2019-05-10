@@ -6,7 +6,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FatvoritesService } from '../fatvorites.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class DemotivatorsComponent implements OnInit {
   @Input() MainPage$: Page = new Page();
   public CurrentPage: number;
 
-  constructor(private http: HttpClient, route: ActivatedRoute, private favoritesService: FatvoritesService) {
+  constructor(private http: HttpClient, route: ActivatedRoute, private favoritesService: FatvoritesService, private router: Router) {
     route.params.subscribe(params => {
       if (params['pageNumber'] !== undefined) {
         this.CurrentPage = params['pageNumber'];
@@ -30,7 +30,7 @@ export class DemotivatorsComponent implements OnInit {
      } else {
        this.CurrentPage = 1;
      }
-   });
+ });
    this.getMainPage();
   }
 
@@ -57,7 +57,11 @@ export class DemotivatorsComponent implements OnInit {
 
   onScroll() {
     this.loadingScroll = true;
+    window.history.replaceState({}, '', `/demotivators/${this.CurrentPage}`);
     this.CurrentPage++;
+
+
+
     this.getMainPageFromApi().subscribe(res => {
       res.demotivatorCollection.forEach(element => {
         this.MainPage$.demotivators.push(element);
