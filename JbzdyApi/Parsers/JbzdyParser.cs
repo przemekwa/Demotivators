@@ -30,7 +30,7 @@ namespace JbzdyApi.Parsers
 
                 var result = client.PostAsync("/logowanie", content).Result;
 
-                var html = Helper.LoadHtmlDocument(client.GetAsync("/nsfw").Result.Content.ReadAsStringAsync().Result);
+                var html = Helper.LoadHtmlDocument(client.GetAsync("/nsfw"+ page).Result.Content.ReadAsStringAsync().Result);
 
                 ParseContent(rezult, html);
 
