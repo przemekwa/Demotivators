@@ -19,5 +19,7 @@ namespace DemotivatorWebApi.ControllersLogic
        public Page GetPage(int page) => this.jbzdyApi.GetPage(page);
 
         public Page GetMainPage() => this.jbzdyApi.GetPage(1);
+
+        public Page GetPageWithLogin(string user, string password, int page) => this.jbzdyApi.GetPageWithLogin(user, password, page);
     }
 }

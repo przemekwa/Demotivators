@@ -6,5 +6,6 @@ namespace DemotivatorWebApi.ControllersLogic
     {
         Page GetMainPage();
         Page GetPage(int page);
+        Page GetPageWithLogin(string user, string password, int page);
     }
 }

@@ -19,6 +19,15 @@ namespace JbzdyApi
             return htmlDocument.Load(addres);
         }
 
+        public static HtmlDocument LoadHtmlDocument(string contentHtml)
+        {
+            var htmlDocument = new HtmlDocument();
+
+            htmlDocument.LoadHtml(contentHtml);
+            
+            return htmlDocument;
+        }
+
        
     }
 }

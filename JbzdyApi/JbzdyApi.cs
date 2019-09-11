@@ -22,5 +22,10 @@ namespace JbzdyApi
         {
             return this.JbzdyParser.Parse(1);
         }
+
+        public Page GetPageWithLogin(string user, string password,int page)
+        {
+            return this.JbzdyParser.ParseWithLogin(user, password, page);
+        }
     }
 }
