@@ -16,26 +16,18 @@
       <li class="nav-item">
         <a routerLink="/favorites" routerLinkActive="active" href="#" class="nav-link" alt="Demotywatory">Favorites</a>
       </li>
-
     </ul>
-
-
-
-
-
     <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" class="form-inline my-2 my-lg-0">
+        <input type="checkbox" [checked]="nsfw" (change)="changeStatus(nsfw, $event)" >
       <p  *ngIf="pageNumberInput.hasError('pattern')" class="error">Podaj liczbę.</p>
       <input  #pageNumberInput="ngModel" name="pageNumber" ngModel pattern="[0-9]+"  class="form-control mr-sm-2"  type="text" placeholder="Go to page" aria-label="Search">
-
-
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to <fa-icon [icon]="faPaperPlane"></fa-icon></button>
-
     </form>
     <button (click)="getRandom()" class="btn btn-outline-success my-2 my-sm-0" type="submit"><fa-icon [icon]="faRandom"></fa-icon></button>
     <button class="btn btn-outline-success my-2 my-sm-0" (click)="openModal('custom-modal-1')">Witaj, {{userName}} <fa-icon [icon]="faUser"></fa-icon></button>
   </div>
-</nav>
 
+</nav>
 <app-modal id='custom-modal-1'>
   <p>User name: <input type="text" [(ngModel)]="userName" /></p>
   <button (click)="closeModal('custom-modal-1');">Close</button>

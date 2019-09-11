@@ -19,8 +19,10 @@ export class AppComponent implements AfterViewInit {
   faRandom = faRandom;
   faPaperPlane = faPaperPlane;
   public userName: string;
+  public nsfw: boolean;
 
   constructor(private router: Router, private modalService: ModalService, private userService: UserService) {
+  this.nsfw = false;
   }
 
   title = 'DemotivatorsWeb';
@@ -31,6 +33,10 @@ export class AppComponent implements AfterViewInit {
     } else  {
       this.modalService.open('custom-modal-1');
     }
+  }
+
+  changeStatus(nsfw: boolean, event: any) {
+    this.nsfw = !this.nsfw;
   }
 
   getRandom() {
@@ -51,6 +57,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   openModal(id: string) {
+
     this.modalService.open(id);
   }
 

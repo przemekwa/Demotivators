@@ -1,7 +1,7 @@
 
 
 
-<div infiniteScroll [infiniteScrollDistance]="1"  [infiniteScrollThrottle]="50"  [infiniteScrollUpDistance]="2"  (scrolled)="onScroll()">
+<div infiniteScroll [infiniteScrollDistance]="1"  [infiniteScrollThrottle]="150"  [infiniteScrollUpDistance]="2"  (scrolled)="onScroll()">
   <div>Current Page {{CurrentPage}}</div>
    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
 
