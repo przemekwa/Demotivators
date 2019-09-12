@@ -14,7 +14,7 @@ namespace DemotivatorWebApi.ControllersLogic
         {
             using (var db = new LiteDatabase($"{userName}.db"))
             {
-                return db.GetCollection<FavouriteModel>("favourite").Find(Query.EQ("IsDeleted", false));
+                return db.GetCollection<FavouriteModel>("favourite").Find(Query.EQ("IsDeleted", false)).OrderByDescending(s=>s.UpdateDate);
             }
         }
 
@@ -22,7 +22,7 @@ namespace DemotivatorWebApi.ControllersLogic
         {
             using (var db = new LiteDatabase($"{userName}.db"))
             {
-                return db.GetCollection<FavouriteModel>("favourite").FindAll();
+                return db.GetCollection<FavouriteModel>("favourite").FindAll().OrderByDescending(s=>s.UpdateDate);
             }
         }
 
