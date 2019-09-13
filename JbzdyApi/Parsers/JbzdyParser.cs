@@ -20,7 +20,7 @@ namespace JbzdyApi.Parsers
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://jbzdy.eu");
+                client.BaseAddress = new Uri("https://jbzdy.cc");
                 
                 var content = new FormUrlEncodedContent(new[]
                 {
