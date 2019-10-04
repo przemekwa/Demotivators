@@ -43,20 +43,20 @@ namespace JbzdyApi.Parsers
         {
             var rezult = new Page(page);
 
-            var html = Helper.LoadHtml(domainUrl + "strona/" + page);
+            var html = Helper.LoadHtml(domainUrl + "str/" + page);
             ParseContent(rezult, html);
             return rezult;
         }
 
         private void ParseContent(Page rezult, HtmlAgilityPack.HtmlDocument html)
         {
-            foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"content-info\"]"))
+            foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"article-content\"]"))
             {
-                var title = htmlNode.SelectSingleNode("div/a")?.InnerText.TrimEnd().TrimStart();
+                var title = htmlNode.SelectSingleNode("h3[@class=\"article-title\"]")?.InnerText.TrimEnd().TrimStart();
 
-                var url = htmlNode.SelectSingleNode("div[@class=\"media\"]/div[@class=\"image rolled\"]/a")?.Attributes["href"].Value?.ToString();
+                var url = htmlNode.SelectSingleNode("h3[@class=\"article-title\"]/a")?.Attributes["href"].Value?.ToString();
 
-                var imgUrl = htmlNode.SelectSingleNode("div/div/a/img")?.Attributes["src"].Value?.ToString();
+                var imgUrl = htmlNode.SelectSingleNode("div[@class=\"article-container\"]/div[@class=\"article-image\"]/a/img")?.Attributes["src"].Value?.ToString();
 
                 if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(url) || string.IsNullOrEmpty(imgUrl))
                 {
