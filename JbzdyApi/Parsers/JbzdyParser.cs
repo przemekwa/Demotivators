@@ -24,11 +24,11 @@ namespace JbzdyApi.Parsers
                 
                 var content = new FormUrlEncodedContent(new[]
                 {
-                    new KeyValuePair<string, string>("l_email", user),
-                    new KeyValuePair<string, string>("l_password", password)
+                    new KeyValuePair<string, string>("login", user),
+                    new KeyValuePair<string, string>("password", password)
                 });
 
-                var result = client.PostAsync("/logowanie", content).Result;
+                var result = client.PostAsync("/auth/login", content).Result;
 
                 var html = Helper.LoadHtmlDocument(client.GetAsync("/nsfw/"+ page).Result.Content.ReadAsStringAsync().Result);
 
