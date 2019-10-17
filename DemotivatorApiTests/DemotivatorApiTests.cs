@@ -16,7 +16,7 @@ namespace DemotivatorApiTests
         {
             var rezult = DemotivatorApi.GetMainPage();
 
-            Assert.Equal(6, rezult.DemotivatorCollection.Count);
+            Assert.Equal(5, rezult.DemotivatorCollection.Count);
         }
 
       [Fact]
