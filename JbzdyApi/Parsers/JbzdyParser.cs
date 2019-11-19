@@ -20,8 +20,8 @@ namespace JbzdyApi.Parsers
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://jbzdy.cc");
-                
+                client.BaseAddress = new Uri("https://jbzd.com.pl");
+
                 var content = new FormUrlEncodedContent(new[]
                 {
                     new KeyValuePair<string, string>("login", user),
@@ -29,6 +29,7 @@ namespace JbzdyApi.Parsers
                 });
 
                 var result = client.PostAsync("/auth/login", content).Result;
+
 
                 var html = Helper.LoadHtmlDocument(client.GetAsync("/nsfw/"+ page).Result.Content.ReadAsStringAsync().Result);
 
