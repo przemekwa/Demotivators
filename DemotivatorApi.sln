@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorApi", "DemotivatorApi\DemotivatorApi.csproj", "{1CC1DE58-C59A-4CAE-8695-B4A1B00C0134}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorApiTests", "Demo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemotivatorWebApi", "DemotivatorWebApi\DemotivatorWebApi.csproj", "{E5478743-4A3B-43DE-935F-FDA629626062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JbzdyApi", "JbzdyApi\JbzdyApi.csproj", "{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JbzdyApi", "JbzdyApi\JbzdyApi.csproj", "{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WykopApi", "WykopApi\WykopApi.csproj", "{2836352D-8605-40F5-9FCE-B28ADC6B5C57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EA9BCB8-80BA-467B-83A4-1EA9D3041675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2836352D-8605-40F5-9FCE-B28ADC6B5C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2836352D-8605-40F5-9FCE-B28ADC6B5C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2836352D-8605-40F5-9FCE-B28ADC6B5C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2836352D-8605-40F5-9FCE-B28ADC6B5C57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

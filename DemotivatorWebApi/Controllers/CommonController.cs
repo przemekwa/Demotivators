@@ -13,7 +13,7 @@ namespace DemotivatorWebApi.Controllers
         [HttpGet("version")]
         public ActionResult<string> GetVersion()
         {
-            return "1.1.7";
+            return "1.1.8";
         }
     }
 }

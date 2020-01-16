@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
+using WykopApi;
 
 namespace DemotivatorWebApi
 {
@@ -29,10 +30,16 @@ namespace DemotivatorWebApi
         {
             services.AddCors();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc((d)=>d.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
+            
+
 
             services.AddScoped<IDemotivatorApi, DemotivatorApi.DemotivatorApi>(sp => new DemotivatorApi.DemotivatorApi("http://demotywatory.pl/"));
             services.AddScoped<IDemotivatorsLogic, DemotivatorsLogic>();
+            services.AddScoped<IWykopLogic, WykopLogic>();
+            services.AddScoped<IWykopApi, WykopApi.WykopApi>();
+            
+
 
             services.AddScoped<IJbzdyApi, JbzdyApi.JbzdyApi>(sp=> new JbzdyApi.JbzdyApi("https://jbzdy.pl/"));
             services.AddScoped<IJbzdyLogic, JbzdyLogic>();
@@ -41,7 +48,7 @@ namespace DemotivatorWebApi
 
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -61,7 +68,7 @@ namespace DemotivatorWebApi
                        .AllowAnyHeader();
             });
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
